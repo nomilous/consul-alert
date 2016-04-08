@@ -11,7 +11,10 @@ git archive $1 | tar -C $APP -x
 cd $APP
 npm install
 bower install
-# cp .env.`hostname -f` .env
+if [ -f .env.`hostname -f` ];
+then
+  cp .env.`hostname -f` .env
+fi
 # ./node_modules/.bin/db-migrate up -e production
 sudo stop $USER
 sudo rm /etc/init/$USER*

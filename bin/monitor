@@ -1,14 +1,29 @@
 #!/usr/bin/env node
 
-var consul = require('consul')();
+/*
+ * 1. One of these monitors should be running on each consul cluster server
+ * 2. _This_ monitor is only responsible for alerting if it is running on
+ *    the master consul server in the cluster. In this way it effectively
+ *    inherits the cluster's mechanism for master selection to prevent
+ *    alerts from being sent by all monitors.
+ * 3. If _This_ monitor is not running on the consul master it still checks
+ *    to ensure that the monitor on the master is alive.
+ */
 
-setInterval(function() {
+// (of 3) Need a tcp port listening on _This_ for remote to determine that
+//        this process is healthy.
 
-  consul.health.state('any', function(err, result) {
-    if (err) {
-      return console.error(err);
-    }
-    console.log(result);
-  });
+require('../lib/maser_ok').start();
 
-}, 1000);
+// var consul = require('consul')();
+
+// setInterval(function() {
+
+//   consul.health.state('any', function(err, result) {
+//     if (err) {
+//       return console.error(err);
+//     }
+//     console.log(result);
+//   });
+
+// }, 1000);
