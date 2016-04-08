@@ -86,6 +86,14 @@ vi git/hooks/post-update
 copy from `./home/monitor/git/hooks/post-update
 
 
+
 ### Deply to each server
 
+* Push this git clone into the deployment repo at each server.
+* Substitute hosts accordingly
 
+```bash
+git push monitor@consul1:git master
+git push monitor@consul2:git master
+git push monitor@consul3:git master
+```
