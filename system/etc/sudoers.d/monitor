@@ -1,0 +1,5 @@
+monitor ALL=(ALL) NOPASSWD:/usr/bin/nf export -a monitor*
+monitor ALL=(ALL) NOPASSWD:/sbin/stop monitor*
+monitor ALL=(ALL) NOPASSWD:/sbin/start monitor*
+monitor ALL=(ALL) NOPASSWD:/sbin/restart monitor*
+monitor ALL=(ALL) NOPASSWD:/bin/rm /etc/init/monitor*

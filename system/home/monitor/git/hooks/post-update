@@ -1,0 +1,22 @@
+#!/bin/sh
+
+echo Running Remote Hook
+
+REPO=$HOME/git
+APP=$HOME/live
+mkdir -p $APP
+cd $REPO
+RELEASE="`date '+%Y-%m-%d %H:%M:%S'` `cat $1`"
+git archive $1 | tar -C $APP -x
+cd $APP
+npm install
+bower install
+# cp .env.`hostname -f` .env
+# ./node_modules/.bin/db-migrate up -e production
+sudo stop $USER
+sudo rm /etc/init/$USER*
+sudo nf export -a $USER -j Procfile -u $USER -o /etc/init
+sudo start $USER
+echo $RELEASE >> $HOME/app.release.log
+echo RELEASE: $RELEASE
+
