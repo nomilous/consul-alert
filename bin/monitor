@@ -12,4 +12,3 @@ require('../lib/master_ok').start({
 require('../lib/main_interval').start({
   interval: parseInt(process.env.MONITOR_INTERVAL) || 30 * 1000
 });
-
