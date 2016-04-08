@@ -6,5 +6,5 @@ Ongoing Development (Discovery of [consul](https://www.consul.io/))
 * It serves only to alert when there is a problem.
 * It does not keep a browsable history (of graphs) for further analysis.
 
-See `system/README` for system setup (consul, deployment of __this__)
+See `system/` for system setup (consul, deployment of __this__)
 
