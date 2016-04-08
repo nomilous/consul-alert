@@ -1,37 +1,15 @@
 #!/usr/bin/env node
 
-/*
- * 1. One of these monitors should be running on each consul cluster server
- * 2. _This_ monitor is only responsible for alerting if it is running on
- *    the master consul server in the cluster. In this way it effectively
- *    inherits the cluster's mechanism for master selection to prevent
- *    alerts from being sent by all monitors.
- * 3. If _This_ monitor is not running on the consul master it still checks
- *    to ensure that the monitor on the master is alive.
- */
-
 // Run relative such that .env is in cwd
 
 require('dotenv').config();
 
-
-// (of 3) Need a tcp port listening on _This_ for remote to determine that
-//        this process is healthy.
-
 require('../lib/master_ok').start({
-  host: process.env.MONITOR_HEALTH_LISTEN_HOST || '0.0.0.0',
+  host: process.env.MONITOR_HEALTH_LISTEN_HOST || 'localhost',
   port: process.env.MONITOR_HEALTH_LISTEN_PORT || 40404,
 });
 
-// var consul = require('consul')();
+require('../lib/main_interval').start({
+  interval: parseInt(process.env.MONITOR_INTERVAL) || 30 * 1000
+});
 
-// setInterval(function() {
-
-//   consul.health.state('any', function(err, result) {
-//     if (err) {
-//       return console.error(err);
-//     }
-//     console.log(result);
-//   });
-
-// }, 1000);

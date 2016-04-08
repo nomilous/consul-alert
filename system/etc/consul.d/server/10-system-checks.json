@@ -1,25 +1,32 @@
 {
     "checks": [
         {
-             "name": "Disk Free",
              "id": "diskFree",
+             "name": "Disk Free",
              "notes": "Critical 5%, warning 10% free",
              "script": "/usr/local/share/monitoring/check_disk -w 10% -c 5% > /dev/null 2>&1",
              "interval": "2m"
         },
         {
-            "name": "Load Average",
             "id": "loadAvg",
+            "name": "Load Average",
             "notes": "Critical 20, warning 16",
             "script": "/usr/local/share/monitoring/check_load -w 16,10,4 -c 20,16,6 > /dev/null 2>&1",
             "interval": "20s"
         },
         {
-            "name": "Memory Free",
             "id": "memFree",
+            "name": "Memory Free",
             "notes": "Critical 5%, warning 10% free",
             "script": "/usr/local/share/monitoring/check_mem -w 10% -c 5% > /dev/null 2>&1",
             "interval": "20s"
+        },
+        {
+            "id": "monit",
+            "name": "Monitor",
+            "tcp": "localhost:40404",
+            "interval": "10s",
+            "timeout": "1s"
         }
     ]
 }
