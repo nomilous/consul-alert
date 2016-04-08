@@ -1,0 +1,42 @@
+#!/usr/bin/env node
+
+var warnAtPercent, criticalAtPercent, work, freemem, totalmem, percent;
+var os = require('os');
+
+function error() {
+  console.error('Expecting eg:\ncheck_mem -w 10% -c 5%');
+  process.exit(2);
+}
+
+try {
+  for (var i = 0; i < process.argv.length; i++) {
+    switch (process.argv[i]) {
+      case '-w':
+        work = process.argv[i + 1];
+        warnAtPercent = parseFloat(work.substr(0, work.length - 1));
+        break;
+      case '-c':
+        work = process.argv[i + 1];
+        criticalAtPercent = parseFloat(work.substr(0, work.length - 1));
+        break;
+    }
+  }
+} catch (e) {
+  return error();
+}
+
+if (isNaN(criticalAtPercent) ||
+    isNaN(warnAtPercent) ||
+    typeof criticalAtPercent === 'undefined' ||
+    typeof warnAtPercent === 'undefined'
+  ) {
+  return error()
+}
+
+freemem = os.freemem();
+totalmem = os.totalmem();
+percent = freemem / totalmem * 100.0;
+
+if (percent <= criticalAtPercent) process.exit(2);
+if (percent <= warnAtPercent) process.exit(1);
+process.exit(0);
