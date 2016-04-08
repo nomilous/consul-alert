@@ -10,7 +10,7 @@ RELEASE="`date '+%Y-%m-%d %H:%M:%S'` `cat $1`"
 git archive $1 | tar -C $APP -x
 cd $APP
 npm install
-bower install
+# bower install
 if [ -f .env.`hostname -f` ];
 then
   cp .env.`hostname -f` .env
