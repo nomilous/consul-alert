@@ -10,10 +10,18 @@
  *    to ensure that the monitor on the master is alive.
  */
 
+// Run relative such that .env is in cwd
+
+require('dotenv').config();
+
+
 // (of 3) Need a tcp port listening on _This_ for remote to determine that
 //        this process is healthy.
 
-require('../lib/maser_ok').start();
+require('../lib/master_ok').start({
+  host: process.env.MONITOR_HEALTH_LISTEN_HOST || '0.0.0.0',
+  port: process.env.MONITOR_HEALTH_LISTEN_PORT || 40404,
+});
 
 // var consul = require('consul')();
 

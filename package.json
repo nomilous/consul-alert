@@ -18,6 +18,7 @@
   "homepage": "https://github.com/nomilous/consul-monitor#readme",
   "dependencies": {
     "bluebird": "^3.3.4",
-    "consul": "^0.24.0"
+    "consul": "^0.24.0",
+    "dotenv": "^2.0.0"
   }
 }
