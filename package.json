@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/nomilous/consul-monitor/issues"
   },
-  "homepage": "https://github.com/nomilous/consul-monitor#readme"
+  "homepage": "https://github.com/nomilous/consul-monitor#readme",
+  "dependencies": {
+    "consul": "^0.24.0"
+  }
 }

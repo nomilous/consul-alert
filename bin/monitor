@@ -1,5 +1,14 @@
 #!/usr/bin/env node
 
+var consul = require('consul')();
+
 setInterval(function() {
-    console.log(new Date());
+
+  consul.health.state('critical', function(err, result) {
+    if (err) {
+      return console.error(err);
+    }
+    console.log(result);
+  });
+
 }, 1000);
