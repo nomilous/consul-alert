@@ -65,7 +65,7 @@ npm install foreman -g
 * And also to allow the githook to restart the service
 
 ```bash
-3 as root
+# as root
 touch /etc/sudoers.d/alert
 chmod 644 /etc/sudoers.d/alert
 vi /etc/sudoers.d/moniitor
