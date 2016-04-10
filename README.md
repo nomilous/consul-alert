@@ -1,4 +1,4 @@
-# consul-monitor
+# consul-alert
 
 Ongoing Development (Discovery of [consul](https://www.consul.io/))
 
@@ -8,5 +8,5 @@ Ongoing Development (Discovery of [consul](https://www.consul.io/))
 
 See `system/` for system setup (consul, deployment of __this__)
 
-See `bin/monitor` for the node process that runs on each consul cluster server and is responsible for sending alerts when services are warning or alerting.
+See `bin/alert` for the node process that runs on each consul cluster server and is responsible for sending alerts when services are warning or alerting.
 
