@@ -22,8 +22,8 @@
             "interval": "20s"
         },
         {
-            "id": "monit",
-            "name": "Monitor",
+            "id": "alert",
+            "name": "Alerter",
             "tcp": "localhost:40404",
             "interval": "10s",
             "timeout": "20s"
