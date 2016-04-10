@@ -1,5 +1,6 @@
 {
   "name": "consul-monitor",
+  "private": true,
   "version": "0.0.1",
   "description": "Ongoing Development (Discovery of [consul](https://www.consul.io/))",
   "main": "index.js",
@@ -8,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/nomilous/consul-monitor.git"
+    "url": "git+https://github.com/nomilous/consul-alert.git"
   },
   "author": "",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/nomilous/consul-monitor/issues"
+    "url": "https://github.com/nomilous/consul-alert/issues"
   },
-  "homepage": "https://github.com/nomilous/consul-monitor#readme",
+  "homepage": "https://github.com/nomilous/consul-alert#readme",
   "dependencies": {
     "bluebird": "^3.3.4",
     "consul": "^0.24.0",

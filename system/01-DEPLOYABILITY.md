@@ -6,8 +6,8 @@ All instructions should be applied to all 3 hosts unless otherwise specified.
 
 ## Create deployability for this app.
 
-* App is deplyed into and run from /home/monitor
-* The deployment is done with a direct git push in the git repo in /home/monitor/git
+* App is deplyed into and run from /home/alert
+* The deployment is done with a direct git push in the git repo in /home/alert/git
 * The git repo has a post update hook to extract and restart the app
 
 
@@ -16,8 +16,8 @@ All instructions should be applied to all 3 hosts unless otherwise specified.
 ### Create the "deamon" user
 
 ```bash
-adduser monitor --disabled-password
-su monitor
+adduser alert --disabled-password
+su alert
 cd ~
 mkdir .ssh
 vi .ssh/authorized_keys
@@ -33,7 +33,7 @@ vi .ssh/authorized_keys
 apt-get update
 apt-get install git
 
-su monitor
+su alert
 cd ~
 mkdir git
 cd git
@@ -59,31 +59,31 @@ npm install foreman -g
 
 
 
-### Configure sudo for monitor (daemon user)
+### Configure sudo for alert (daemon user)
 
 * Uses sudo to allow write into /etc/init/ by foreman (nf) in githook
 * And also to allow the githook to restart the service
 
 ```bash
 3 as root
-touch /etc/sudoers.d/monitor
-chmod 644 /etc/sudoers.d/monitor
+touch /etc/sudoers.d/alert
+chmod 644 /etc/sudoers.d/alert
 vi /etc/sudoers.d/moniitor
 ```
-copy from `./etc/sudoers.d/monitor` in this repo
+copy from `./etc/sudoers.d/alert` in this repo
 
 
 
 ### Create git hook that extracts, installs and re-starts service
 
 ```bash
-su monitor
+su alert
 cd ~
 touch git/hooks/post-update
 chmod +x git/hooks/post-update
 vi git/hooks/post-update
 ```
-copy from `./home/monitor/git/hooks/post-update
+copy from `./home/alert/git/hooks/post-update
 
 
 
@@ -93,7 +93,7 @@ copy from `./home/monitor/git/hooks/post-update
 * Substitute hosts accordingly
 
 ```bash
-git push monitor@consul1:git master
-git push monitor@consul2:git master
-git push monitor@consul3:git master
+git push alert@consul1:git master
+git push alert@consul2:git master
+git push alert@consul3:git master
 ```
