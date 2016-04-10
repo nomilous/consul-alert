@@ -1,1 +1,1 @@
-monitor: bin/monitor
+alert: bin/alert
