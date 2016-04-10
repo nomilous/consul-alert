@@ -1,0 +1,19 @@
+{
+    "server": false,
+    "datacenter": "ams2",
+    "data_dir": "/var/consul",
+    "bind_addr": "146.185.137.201",
+    "encrypt": "NirDFEGakdudsnQdZ7422A==",
+    "log_level": "INFO",
+    "enable_syslog": true,
+    "start_join": [
+      "146.185.137.129",
+      "146.185.147.120",
+      "146.185.147.121"
+    ],
+    "ca_file": "/etc/consul.d/ssl/ca.cert",
+    "cert_file": "/etc/consul.d/ssl/example.com.cert",
+    "key_file": "/etc/consul.d/ssl/example.com.key",
+    "verify_incoming": true,
+    "verify_outgoing": true
+}

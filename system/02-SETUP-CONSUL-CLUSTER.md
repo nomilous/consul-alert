@@ -249,6 +249,11 @@ start consul
 # CTRL-C to stop the boostrap
 exit # back to root
 start consul
+
+
+
+
+tail -f /var/log/syslog
 ```
 
 

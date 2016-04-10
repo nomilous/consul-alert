@@ -97,3 +97,8 @@ git push alert@consul1:git master
 git push alert@consul2:git master
 git push alert@consul3:git master
 ```
+
+
+```
+tail -f /var/log/alert/alert-1.log
+```
