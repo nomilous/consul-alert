@@ -18,6 +18,10 @@ unzip *.zip
 rm *.zip
 ```
 
+## Repeat steps to hijack nagios plugins]
+
+[hijack-plugins-from-nagios](https://github.com/nomilous/consul-alert/blob/master/system/03-CONSUL-SYSTEM-CHECKS.md#hijack-plugins-from-nagios)
+
 ## Copy SSL certs to host.
 
 * This refers to the certs created in `/root/CONSUL_ROOT_CA` in 02-SETUP-CONSUL-CLUSTER
@@ -36,6 +40,8 @@ vi /etc/consul.d/agent/00-config.json
 * adjust bind_addr to this servers address
 * adjust references to the cert file locations
 * adjust start_join to include all (or most) of the consul cluster servers
+
+Repeat for `10-system-checks.json`
 
 
 ## Create user and runtime dir
@@ -63,3 +69,4 @@ start consul-agent
 
 tail -f /var/log/syslog
 ```
+
