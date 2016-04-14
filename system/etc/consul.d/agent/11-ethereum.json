@@ -1,0 +1,19 @@
+{
+  "service": {
+    "id": "ether",
+    "name": "Ethereum",
+    "tags": ["private-net", "miner"],
+    "address": "127.0.0.1",
+    "port": 8545,
+    "enableTagOverride": false,
+    "checks": [
+      {
+          "id": "ether-rpc",
+          "name": "Ethereum Rpc Port",
+          "tcp": "localhost:8545",
+          "interval": "10s",
+          "timeout": "20s"
+      }
+    ]
+  }
+}
